@@ -23,28 +23,91 @@ GOOD LUCK 😀
 */
 
 
-// Fisrt CHALLENGE
+// First CHALLENGE
+var tipArray = []
 var johnexpenses = {
   expenses: [124, 48, 268, 180, 42],
   calculatetip: function(){
     for(var expense in this.expenses){
       if(this.expenses[expense]< 50){
         this.tip = (20/100)* this.expenses[expense];
-        return this.tip;
+        tipArray.push(this.tip);
+        //return this.tip;
       }else if(this.expenses[expense] > 50 && this.expenses[expense] < 200){
         this.tip = (15/100)* this.expenses[expense];
-        return this.tip;
+        tipArray.push(this.tip);
+        //return this.tip;
       }else if(this.expenses[expense] > 200){
         this.tip = (10/100)* this.expenses[expense];
-        return this.tip;
+        tipArray.push(this.tip);
+        //return this.tip;
       }
     }
   },
 }
 
-var tipArray=[]
-var finalExpenses=[]
-
+var finalExpenses=[];
+var expenses= [124, 48, 268, 180, 42];
 console.log(johnexpenses.expenses);
 tipArray.push(johnexpenses.calculatetip());
-console.log(tipArray);
+console.log(tipArray.pop());
+
+for(var i=0; i < tipArray.length; i++){
+  finalExpenses.push(expenses[i] + tipArray[i])
+}
+
+console.log(finalExpenses);
+
+// Second CHALLENGE
+// Now lets calculate for Mark's family
+
+var markexpenses = [75, 375, 110, 45]
+var marktip;
+function calculateTip(expense){
+  if(expense < 100){
+    marktip= (20/100)*expense;
+    return marktip;
+  } else if(expense > 100 && expense < 300){
+    marktip= (10/100)*expense;
+    return marktip;
+  } else if(expense>300){
+    marktip= (35/100)*expense;
+    return marktip;
+  }
+}
+
+var markTipAmount = []
+var markFinalAmount= []
+
+for(var expense in markexpenses){
+  markTipAmount.push(calculateTip(markexpenses[expense]));
+}
+
+for(var i=0; i < markTipAmount.length ; i++){
+  markFinalAmount.push(markexpenses[i] + markTipAmount[i])
+}
+
+console.log(markTipAmount);
+console.log(markFinalAmount);
+
+function calculateAverage(tipArray){
+  var totalTip=0;
+  for(var i=0; i < tipArray.length; i++){
+    totalTip = totalTip + tipArray[i];
+  }
+  var avgTip= totalTip/tipArray.length;
+  return avgTip;
+}
+
+var markTipAvg = calculateAverage(markTipAmount);
+var johnTipAvg = calculateAverage(tipArray);
+console.log(markTipAvg);
+console.log(johnTipAvg);
+
+if(markTipAvg > johnTipAvg){
+  console.log('Mark family paid highest tip');
+} else if(markTipAvg==johnTipAvg){
+  console.log("Mark & John family paid equal tip");
+} else{
+  console.log("John family paid highest tip");
+}

@@ -1,11 +1,11 @@
-// here, lets discuss one of the most important asceptn of JS object/ inheritance/ prototype
+// here we gonna discuss about the concept of prototype/objects/ inheritance
 
-var john = {
-  name:'John Mathew',
-  yob: 1996,
+var john ={
+  name: 'John Phillips',
+  yob: 2010,
   calculateAge: function(){
-    this.presentAge = 2019 - this.yob;
-    return this.presentAge;
+    var presentAge= 2019 - this.yob;
+    this.presentAge=presentAge;
   }
 }
 console.log(john);

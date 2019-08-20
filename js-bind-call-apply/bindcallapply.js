@@ -76,7 +76,7 @@ function calculatePresentAge(yob, currentYear){
   return currentYear - yob;
 }
 
-var copyOfCalculatePresentAge= calculatePresentAge.bind(this, 2019)
+var copyOfCalculatePresentAge= calculatePresentAge.bind(this, 20)
 
 var func = eligibleForVote(calculatePresentAge);
 console.log(func);

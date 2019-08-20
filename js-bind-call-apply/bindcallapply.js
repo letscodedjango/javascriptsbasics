@@ -64,20 +64,22 @@ var eligibleForVote = function(calculateAgeFunc){
   }
 }
 
-// function calculateAge(yob){
-//   return 2019 - yob;
-// }
-//
-// eligibleForVote(calculateAge)(1990);
+function calculateAge(yob){
+  return 2019 - yob;
+}
+
+eligibleForVote(calculateAge)(1990);
 
 // Now lets consider we have another fucntion where we have to use - two functions
 
-function calculatePresentAge(yob, currentYear){
+function calculatePresentAge(yob,currentYear){
   return currentYear - yob;
 }
 
-var copyOfCalculatePresentAge= calculatePresentAge.bind(this, 2019)
+var copyOfCalculatePresentAge= calculatePresentAge.bind(this,18)
 
-var func = eligibleForVote(calculatePresentAge);
+console.log(copyOfCalculatePresentAge);
+
+var func = eligibleForVote(copyOfCalculatePresentAge);
 console.log(func);
-func(2019);
+func(1990);
